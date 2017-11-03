@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SocketIO</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+             var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + '/connection');
+
+            socket.emit('my_event', {data: 'I\'m connecting'});
+
+            socket.on('connected', function (msg) {
+                console.log(msg.data)
+            })
+        })
+    </script>
+</head>
+<body>
+    <input type="button" value="Send Message"/>
+</body>
+</html>
